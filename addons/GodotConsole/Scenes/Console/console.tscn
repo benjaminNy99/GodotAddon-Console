@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgiepqurxdrf3"]
+
+[ext_resource type="Script" uid="uid://cdojhjm1kgua1" path="res://addons/GodotConsole/Scenes/Console/console.gd" id="1_4jbg4"]
+
+[node name="Console" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4jbg4")
+
+[node name="pc_background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbc_elements" type="VBoxContainer" parent="pc_background"]
+layout_mode = 2
+
+[node name="rtl_output" type="RichTextLabel" parent="pc_background/vbc_elements"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "zzs"
+
+[node name="le_input" type="LineEdit" parent="pc_background/vbc_elements"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[connection signal="text_submitted" from="pc_background/vbc_elements/le_input" to="." method="_on_le_input_text_submitted"]

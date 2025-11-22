@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://872l30l1v18m"]
+
+[ext_resource type="PackedScene" uid="uid://bgiepqurxdrf3" path="res://addons/GodotConsole/Scenes/Console/console.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cdv3vf7o7v58g" path="res://addons/GodotConsole/Scenes/Spectator/spectator.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node3D"]
+
+[node name="spectator" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Window" type="Window" parent="."]
+oversampling_override = 1.0
+initial_position = 3
+size = Vector2i(200, 200)
+current_screen = 0
+
+[node name="Console" parent="Window" instance=ExtResource("1_ig7tw")]
