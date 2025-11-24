@@ -25,14 +25,14 @@ public partial class Manager : Node
     }
 
     /// <summary>
-    /// Split input in command and args
+    /// Parses the input into command name and arguments, then executes the command.
     /// </summary>
-    /// <param name="input">Input string</param>
+    /// <param name="input">Raw input string containing the command and its arguments.</param>
     public void Command(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
         {
-            GD.Print("Sin comando.");
+            OutPut.AppendText(LibConsole.PrintWarning("No command entered.") + "\n");
             return;
         }
 
@@ -43,22 +43,25 @@ public partial class Manager : Node
             ? parts.Skip(1).ToArray()
             : Array.Empty<string>();
 
-        GD.Print($"Comando: {cmd}");
-        GD.Print($"Args: {string.Join(", ", args)}");
         _CommandExecute(cmd, args);
     }
 
+    /// <summary>
+    /// Executes a single command by its name and arguments.
+    /// </summary>
+    /// <param name="cmd">Command name.</param>
+    /// <param name="args">Command arguments.</param>
     private void _CommandExecute(string cmd, params string[] args)
     {
         if (string.IsNullOrWhiteSpace(cmd))
         {
-            GD.Print("Comando vacio");
+            OutPut.AppendText(LibConsole.PrintWarning("Empty command.") + "\n");
             return;
         }
 
         if (!DicCommands.TryGetValue(cmd, out var command))
         {
-            GD.Print($"Comando {cmd} no encontrado");
+            OutPut.AppendText(LibConsole.PrintWarning($"Command '{cmd}' not found.") + "\n");
             return;
         }
 
@@ -68,7 +71,9 @@ public partial class Manager : Node
         }
         catch (Exception ex)
         {
-            GD.Print($"Error ejecutando {cmd}: {ex.Message}");
+            OutPut.AppendText(
+                LibConsole.PrintError($"Error executing '{cmd}': {ex.Message}") + "\n"
+            );
         }
     }
 

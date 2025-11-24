@@ -19,17 +19,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vbc_elements" type="VBoxContainer" parent="pc_background"]
-layout_mode = 2
-
-[node name="rtl_output" type="RichTextLabel" parent="pc_background/vbc_elements"]
+[node name="rtl_output" type="RichTextLabel" parent="pc_background"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
 bbcode_enabled = true
-text = "zzs"
 
-[node name="le_input" type="LineEdit" parent="pc_background/vbc_elements"]
+[node name="le_input" type="LineEdit" parent="pc_background"]
 layout_mode = 2
 size_flags_vertical = 10
+theme_override_font_sizes/font_size = 12
+placeholder_text = "Input Command"
+clear_button_enabled = true
 
-[connection signal="text_submitted" from="pc_background/vbc_elements/le_input" to="." method="_on_le_input_text_submitted"]
+[connection signal="text_submitted" from="pc_background/le_input" to="." method="_on_le_input_text_submitted"]

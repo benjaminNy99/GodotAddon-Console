@@ -1,7 +1,7 @@
 extends Control
 
-@onready var rtl_output: RichTextLabel = $pc_background/vbc_elements/rtl_output
-@onready var le_input: LineEdit = $pc_background/vbc_elements/le_input
+@onready var rtl_output: RichTextLabel = $pc_background/rtl_output
+@onready var le_input: LineEdit = $pc_background/le_input
 
 var manager_node
 
