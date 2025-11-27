@@ -6,7 +6,7 @@ using System;
 [Command("text")]
 public partial class TextCommand : ICommand
 {
-    public void Execute(params string[] args)
+    public void Execute(ConsoleContext ctx, params string[] args)
     {
         throw new NotImplementedException();
     }

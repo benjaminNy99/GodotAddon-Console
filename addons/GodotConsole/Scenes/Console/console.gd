@@ -6,6 +6,7 @@ extends Control
 var manager_node
 
 func _ready() -> void:
+	add_to_group("console")
 	load_commands()
 
 ## load commands

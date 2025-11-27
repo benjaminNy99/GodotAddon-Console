@@ -67,12 +67,17 @@ public partial class Manager : Node
 
         try
         {
-            command.Execute(args ?? Array.Empty<string>());
+            command.Execute(new ConsoleContext
+            {
+                RootNode = GetTree().Root,
+                Print = msg => OutPut.AppendText(msg + "\n")
+            }, args);
+            //command.Execute(args ?? Array.Empty<string>());
         }
         catch (Exception ex)
         {
             OutPut.AppendText(
-                LibConsole.PrintError($"Error executing '{cmd}': {ex.Message}") + "\n"
+                LibConsole.PrintError($"executing '{cmd}': {ex.Message}") + "\n"
             );
         }
     }
